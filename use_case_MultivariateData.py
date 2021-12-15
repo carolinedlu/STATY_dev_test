@@ -305,9 +305,21 @@ def app():
         
             # Show summary statistics (raw data)
             if st.checkbox('Show summary statistics (raw data) ', value = False, key = st.session_state['key']):
+                st.markdown("""
+                    <style>
+                    .ReactVirtualized__Grid::-webkit-scrollbar {
+                      display: none;
+                    }
+
+                    .ReactVirtualized__Grid {
+                      -ms-overflow-style: none;  /* IE and Edge */
+                      scrollbar-width: none;  /* Firefox */
+                    }
+                    </style>
+                """, unsafe_allow_html=True)
                 #st.table(df_summary["ALL"].style.set_precision(user_precision))
-                #st.write(df_summary["ALL"].style.set_precision(user_precision))
-                st.dataframe(df_summary["ALL"].style.set_precision(user_precision).astype(str))
+                st.write(df_summary["ALL"].style.set_precision(user_precision))
+                #st.dataframe(df_summary["ALL"].style.set_precision(user_precision).astype(str))
                     
                 # Download link for summary statistics
                 output = BytesIO()
