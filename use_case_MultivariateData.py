@@ -304,8 +304,9 @@ def app():
                 st.write(df_summary["Variable types"])
         
             # Show summary statistics (raw data)
-            if st.checkbox('Show summary statistics (raw data) ', value = False, key = st.session_state['key']): 
-                st.write(df_summary["ALL"].style.set_precision(user_precision))
+            if st.checkbox('Show summary statistics (raw data) ', value = False, key = st.session_state['key']):
+                st.table(df_summary["ALL"].style.set_precision(user_precision))
+                #st.write(df_summary["ALL"].style.set_precision(user_precision))
                 
                 # Download link for summary statistics
                 output = BytesIO()
