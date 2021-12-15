@@ -305,9 +305,10 @@ def app():
         
             # Show summary statistics (raw data)
             if st.checkbox('Show summary statistics (raw data) ', value = False, key = st.session_state['key']):
-                st.table(df_summary["ALL"].style.set_precision(user_precision))
+                #st.table(df_summary["ALL"].style.set_precision(user_precision))
                 #st.write(df_summary["ALL"].style.set_precision(user_precision))
-                
+                st.dataframe(df_summary["ALL"].style.set_precision(user_precision).astype(str))
+                    
                 # Download link for summary statistics
                 output = BytesIO()
                 excel_file = pd.ExcelWriter(output, engine="xlsxwriter")
